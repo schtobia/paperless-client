@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2024 Tobias Schmidl
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+---
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.6.0
+  hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-merge-conflict
+  - id: check-byte-order-marker
+- repo: https://github.com/fsfe/reuse-tool
+  rev: v3.0.2
+  hooks:
+  - id: reuse
+- repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  rev: '2.7.3'
+  hooks:
+  - id: editorconfig-checker
+    alias: ec
+    stages: [commit]
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v3.2.0
+  hooks:
+  - id: conventional-pre-commit
+    stages: [commit-msg]
+- repo: https://github.com/igorshubovych/markdownlint-cli
+  rev: v0.40.0
+  hooks:
+  - id: markdownlint
+- repo: https://github.com/koalaman/shellcheck-precommit
+  rev: v0.10.0
+  hooks:
+  - id: shellcheck
+    args: ["-x"]
+...
