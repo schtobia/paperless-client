@@ -14,13 +14,13 @@ print_usage () {
     cat << END_OF_COMMENT
     $(basename "$0") get_tasks | put_document <file>
 
-      commands:
+    commands:
         get_tasks       Get the list of tasks. This is not formatted, i.e. you'll
                         have to pipe it yourself through a formatter.
         put_document    Uploads the document under <file> to your paperless
                         instance.
 
-      return values:
+    return values:
         If everything went alright, $(basename "$0") returns 0. Every other return
         value indicates an error.
 
