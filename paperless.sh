@@ -3,6 +3,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+VERSION="1.0.0"
+
+# load_env loads the .env file and checks if the necessary parameters are present.
 load_env () {
     [ ! -r "./.env" ] && { echo "env file not readable, please make sure a .env is present." >&2; exit 1; }
     . "./.env"
@@ -10,6 +13,7 @@ load_env () {
     [ -z "$BASE_URL" ] && { echo "Parameter BASE_URL is not present in env file, please fill it with the URL of your paperless server." >&2; exit 1; }
 }
 
+# print_usage prints the usage of the script.
 print_usage () {
     cat << END_OF_COMMENT
     $(basename "$0") get_tasks | put_document <file>
@@ -29,6 +33,11 @@ END_OF_COMMENT
 
 AUTH_PARM="Authorization: Token $TOKEN"
 
+
+echo "$(basename "$0") v${VERSION}"
+echo ""
+
+[ "$#" -lt 1 ] && { print_usage; exit 1; }
 case "$1" in
     get_tasks)
         load_env
